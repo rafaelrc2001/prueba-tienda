@@ -8,18 +8,27 @@
 </head>
 <body>
     <div>
-        <label>Nombre</label>
-        <input type="text" id="nombre" name="nombre">
-        <label>numero</label>
-        <input type="text" id="numero" name="numero">
-        <label>estado</label>
-        <select id="estado" name="estado">
-            <option value="" selected disabled>Selecciona un estado</option>
-            <option value="CHIH">Chihuahua</option>
-            <option value="CDMX">Ciudad de México</option>
-            <option value="NAY">Nayarit</option>
-            <option value="NL">Nuevo León</option>
-        </select>
+        <form id="formularioPrincipal">
+            <div>
+                <label>Nombre</label>
+                <input type="text" id="nombre" name="nombre">
+            </div>
+            <div>
+                <label>numero</label>
+                <input type="text" id="numero" name="numero">
+            </div>
+            <div>
+                <label>estado</label>
+                <select id="estado" name="estado">
+                    <option value="" selected disabled>Selecciona un estado</option>
+                    <option value="CHIH">Chihuahua</option>
+                    <option value="CDMX">Ciudad de México</option>
+                    <option value="NAY">Nayarit</option>
+                    <option value="NL">Nuevo León</option>
+                </select>
+            </div>
+            <button type="submit">Enviar</button>
+        </form>
     </div>
     <div>
         <table>
@@ -30,14 +39,11 @@
                     <th>Estado</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Nombre</td>
-                    <td>Numero</td>
-                    <td>Estado</td>
-                </tr>
+            <tbody id="cuerpoTabla">
+               
             </tbody>
         </table>
     </div>
+    <script src="../js/principal.js"></script>
 </body>
 </html>

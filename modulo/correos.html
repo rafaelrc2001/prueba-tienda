@@ -8,32 +8,45 @@
 </head>
 <body>
     <div>
-        <label>Correo</label>
-        <input type="text" id="correo" name="correo">
-        <label>Asunto</label>
-        <input type="text" id="asunto" name="asunto">
-        <label>Mensaje</label>
-        <textarea id="mensaje" name="mensaje"></textarea>
-        <button type="submit">Enviar</button>
+        <h2>Nuevo Correo</h2>
+        <form id="formularioCorreo">
+            <div>
+                <label for="correo">Correo electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+            </div>
+            
+            <div>
+                <label for="asunto">Asunto:</label>
+                <input type="text" id="asunto" name="asunto" required>
+            </div>
+            
+            <div>
+                <label for="mensaje">Mensaje:</label>
+                <textarea id="mensaje" name="mensaje" required></textarea>
+            </div>
+            
+            <button type="submit">Enviar</button>
+        </form>
     </div>
+
     <div>
+        <h2>Correos Enviados</h2>
         <table>
             <thead>
                 <tr>
                     <th>Correo</th>
                     <th>Asunto</th>
                     <th>Mensaje</th>
+                    <th>Fecha</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Correo</td>
-                    <td>Asunto</td>
-                    <td>Mensaje</td>
-                </tr>
+            <tbody id="cuerpoTabla">
+                <!-- Los correos se agregarán aquí dinámicamente -->
             </tbody>
         </table>
     </div>
+
+    <!-- Importamos el archivo JavaScript -->
+    <script src="../js/correos.js"></script>
 </body>
 </html>
-
