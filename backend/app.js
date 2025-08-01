@@ -5,14 +5,23 @@ require('dotenv').config();
 
 // Importaciones de rutas
 const personasRoutes = require('./routes/personasroutes');
+const correosRoutes = require('./routes/correosroutes');
 const { testConnection } = require('./config/database');
 const db = require('./config/database');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Configuración de CORS
+const corsOptions = {
+    origin: ['http://localhost:5500', 'http://127.0.0.1:5500'], // Ajusta según tu configuración
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,6 +30,7 @@ app.use(express.static(path.join(__dirname, '../')));
 
 // Rutas API
 app.use('/api/personas', personasRoutes);
+app.use('/api/correos', correosRoutes);
 
 // Rutas de vistas
 app.get('/', (req, res) => {
