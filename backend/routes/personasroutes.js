@@ -17,10 +17,18 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         const { nombre, numero, estado } = req.body;
+        
+        // Validar que los campos requeridos estén presentes
+        if (!nombre || !numero) {
+            return res.status(400).json({ error: 'Nombre y número son campos requeridos' });
+        }
+        
+        // El estado es opcional, si no se proporciona se usará el valor por defecto de la base de datos
         const result = await db.query(
             'INSERT INTO formulario (nombre, numero, estado) VALUES ($1, $2, $3) RETURNING *',
-            [nombre, numero, estado]
+            [nombre.trim(), numero, (estado || '').trim()]
         );
+        
         res.status(201).json(result.rows[0]);
     } catch (err) {
         console.error('Error al guardar formulario:', err.message);
